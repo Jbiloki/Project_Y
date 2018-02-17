@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Movement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour {
 
     Vector3 movement;
     Rigidbody playerRigidBody;
