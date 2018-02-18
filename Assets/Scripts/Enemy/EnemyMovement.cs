@@ -5,11 +5,14 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour {
 
-    Transform player;
+
+	public string playerName = "Player";
+
+	Transform player;
     NavMeshAgent nav;
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag(playerName).transform;
         nav = GetComponent<NavMeshAgent>();
     }
 	// Use this for initialization

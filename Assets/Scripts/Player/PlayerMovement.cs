@@ -10,8 +10,14 @@ public class PlayerMovement : MonoBehaviour {
     int floorMask;
     public float moveSpeed;
 
+	//Animattion
+	private Animator anim;
+
     private void Awake()
-    {
+    {	
+		//Animation
+		anim = GetComponent<Animator> ();
+
         playerRigidBody = GetComponent<Rigidbody>();
         floorMask = LayerMask.GetMask("Floor");
     }
@@ -30,6 +36,9 @@ public class PlayerMovement : MonoBehaviour {
         movement = movement.normalized * moveSpeed * Time.deltaTime;
         playerRigidBody.MovePosition(transform.position + movement);
         followMouse();
+
+		//Animation
+		AnimationUpdate(moveHorizontal, moveVertical);
 	}
 
     void followMouse()
@@ -44,4 +53,43 @@ public class PlayerMovement : MonoBehaviour {
             playerRigidBody.MoveRotation(newRotation);
         }
     }
+
+	void AnimationUpdate(float moveHorizontal, float moveVertical){
+		UpdateWalkingAnimation (moveHorizontal, moveVertical);
+		ResetSpecialAnimation ();
+		UpdateAnimation ();
+	}
+
+	void ResetSpecialAnimation(){
+		anim.SetInteger ("SwipeCtrl", 0);
+		anim.SetInteger ("AtkCtrl", 0);
+		anim.SetInteger ("FlyCtrl", 0);
+	}
+
+	void UpdateWalkingAnimation(float mHorizontal, float mVertical)
+	{
+		if (mHorizontal != 0) {
+			anim.SetInteger ("IdleCtrl", 0);
+			anim.SetInteger ("WalkingCtrl", 1);
+		} else {
+			anim.SetInteger ("IdleCtrl", 1);
+			anim.SetInteger ("WalkingCtrl", 0);
+		}
+
+	}
+	void UpdateAnimation()
+	{
+		if(Input.GetKey(KeyCode.Alpha3)){
+			anim.SetInteger ("SwipeCtrl", 1);
+		}
+		if(Input.GetKey(KeyCode.Mouse0)){
+			anim.SetInteger ("AtkCtrl", 1);
+		}
+		if(Input.GetKey(KeyCode.Alpha2)){
+			anim.SetInteger ("FlyCtrl", 1);
+		}
+
+	}
+
+
 }
