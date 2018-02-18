@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour {
         followMouse();
 
 		//Animation
-		AnimationUpdate(moveHorizontal, moveVertical);
+		//AnimationUpdate(moveHorizontal, moveVertical);
 	}
 
     void followMouse()
