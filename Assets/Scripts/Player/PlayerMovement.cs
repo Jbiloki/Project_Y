@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour {
         followMouse();
 
 		//Animation
-		//AnimationUpdate(moveHorizontal, moveVertical);
+		AnimationUpdate(moveHorizontal, moveVertical);
 	}
 
     void followMouse()
@@ -54,18 +54,24 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+
+
+	//Animation Gateway function
 	void AnimationUpdate(float moveHorizontal, float moveVertical){
 		UpdateWalkingAnimation (moveHorizontal, moveVertical);
 		ResetSpecialAnimation ();
 		UpdateAnimation ();
 	}
 
+	//Reset ongoing animation
 	void ResetSpecialAnimation(){
+		Debug.Log("ResetSpecialAnimation");
 		anim.SetInteger ("SwipeCtrl", 0);
 		anim.SetInteger ("AtkCtrl", 0);
 		anim.SetInteger ("FlyCtrl", 0);
 	}
 
+	//Keep walking animation if the character is moving
 	void UpdateWalkingAnimation(float mHorizontal, float mVertical)
 	{
 		if (mHorizontal != 0) {
@@ -77,9 +83,11 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 	}
+
+	//Set animation key on key press
 	void UpdateAnimation()
 	{
-		if(Input.GetKey(KeyCode.Alpha3)){
+		if(Input.GetKey(KeyCode.Alpha1)){
 			anim.SetInteger ("SwipeCtrl", 1);
 		}
 		if(Input.GetKey(KeyCode.Mouse0)){
