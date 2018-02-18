@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour {
 
-	public string playerName = "Player";
     public float timeBetweenAttacks = 0.5f;
     public int attackDamage = 10;
 
@@ -15,7 +14,7 @@ public class EnemyAttack : MonoBehaviour {
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag(playerName);
+        player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
     }
     // Use this for initialization
