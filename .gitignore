@@ -1,1 +1,9 @@
+# =============== #
+# Unity generated #
+# =============== #
 .vs/
+UnityPackageManager/
+ProjectSettings/
+Library/
+Project_Y.csproj
+Project_Y.sln
