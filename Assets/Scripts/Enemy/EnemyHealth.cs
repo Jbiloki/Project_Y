@@ -80,6 +80,7 @@ public class EnemyHealth : MonoBehaviour {
     /// </summary>
     void Death()
     {
+		//animation Trigger
 		AnimationChange ();
 
         isDead = true;
@@ -101,6 +102,10 @@ public class EnemyHealth : MonoBehaviour {
         Destroy(gameObject, 2f);
     }
 
+
+	/// <summary>
+	/// Animations change. Activate the death animation
+	/// </summary>
 	void AnimationChange (){
 		//AnimationCode
 		//Trigger DeathAnimation
