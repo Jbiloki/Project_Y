@@ -7,8 +7,10 @@ public class EnemyMovement : MonoBehaviour {
 
 	Transform player;
     NavMeshAgent nav;
+    EnemyHealth enemyHealth;
     private void Awake()
     {
+        enemyHealth = GetComponent<EnemyHealth>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
     }
@@ -19,7 +21,10 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        nav.SetDestination(player.position);
-	}
+        if (enemyHealth.currentHealth > 0)
+        {
+            nav.SetDestination(player.position);
+        }
+    }
 
 }

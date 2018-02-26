@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerRangedAttack : MonoBehaviour {
 
-    public int damage = 10;
+    public int damage = 20;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
 
