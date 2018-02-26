@@ -18,6 +18,9 @@ public class EnemyHealth : MonoBehaviour {
     bool isDead;
     bool isSinking;
 
+	//Animation Controll
+	Animator anim;
+
     //Awake is similar to start but runs more often to avoid glitches from pausing or
     //incorrect initalization.
     private void Awake()
@@ -33,6 +36,9 @@ public class EnemyHealth : MonoBehaviour {
         isDead = false;
         isSinking = false;
         currentHealth = startingHealth;
+
+		//AnimationCode
+		anim = GetComponent <Animator> ();
     }
 	
 	// Update is called once per frame
@@ -74,6 +80,8 @@ public class EnemyHealth : MonoBehaviour {
     /// </summary>
     void Death()
     {
+		AnimationChange ();
+
         isDead = true;
         sphereCollider.isTrigger = true;
         StartSinking();
@@ -92,4 +100,14 @@ public class EnemyHealth : MonoBehaviour {
         //After 2 seconds destroy object this script is attached to.
         Destroy(gameObject, 2f);
     }
+
+	void AnimationChange (){
+		//AnimationCode
+		//Trigger DeathAnimation
+		print("Death");
+		anim.SetInteger("WalkingCtrl", 0);
+		anim.SetTrigger ("DeathTrigger");
+		//WaitForSecondsRealtime (2f);
+
+	}
 }
