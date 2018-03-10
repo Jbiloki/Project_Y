@@ -2,6 +2,8 @@
 # Unity generated #
 # =============== #
 .vs/
+.vscode/
+Assembly-CSharp.csproj
 UnityPackageManager/
 ProjectSettings/
 Library/
